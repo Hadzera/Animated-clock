@@ -1,0 +1,119 @@
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+    
+     <title>Document</title>
+ </head>
+ <body>
+
+    <div id="container">
+    
+        <canvas id="my-canvas" width="400" height="300"></canvas>
+        
+    </div>
+
+ 
+
+<script>
+
+window.onload = draw;
+var ctx;
+var image;
+        function draw() {
+            let myCanvas = document.getElementById("my-canvas");
+            if (myCanvas.getContext) {
+                ctx = myCanvas.getContext('2d');
+                
+              
+            drawImage(image);
+               drawTick();
+               
+            
+              
+    
+
+            } else {
+                alert("Canvas is not supported.");
+            }
+            
+        }
+        
+  
+    
+        function drawImage(image){
+            image = new Image();
+              image.addEventListener('load', function(){
+               
+                  ctx.drawImage(image, 53, 5, image.width / 2.2, image.height / 2.2);
+                  
+              })
+              image.src = "clock.gif";
+              
+            
+        }
+
+        function setTick(angle, y){
+
+          
+            ctx.save();
+            ctx.beginPath();
+            ctx.translate(200, 150);
+            ctx.rotate((Math.PI / 180) * angle);
+            ctx.translate(-200, -150);
+            ctx.beginPath();
+            ctx.moveTo(200, 150);
+            ctx.lineTo(200, y);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.restore();
+
+          
+
+        }
+
+       function drawTick(){
+        
+    
+        var data = new Date();
+        ctx.clearRect(108, 58, 184, 184);
+     
+            
+            let min = data.getMinutes();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'green';
+            setTick(min * 6, 63);
+
+            let sec = data.getSeconds();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'red';
+            setTick(sec * 6, 58);
+
+            let h = data.getHours();
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = 'green';
+            setTick(h * 30, 72)
+ 
+            ctx.save();
+        
+
+            
+            requestId = requestAnimationFrame(function(){
+             drawTick();
+         })
+       }
+      
+           
+         
+            
+
+          
+       
+   
+    
+</script>
+     
+ </body>
+ </html>

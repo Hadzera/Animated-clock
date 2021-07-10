@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&family=Caveat&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+#container{
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+    margin-top: 100px;
+    border: 5px solid darkslategray;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    font-family: 'Caveat' cursive;
+ 
+}
+
+h2{
+    font-family: 'Pacifico', cursive;
+    color: whitesmoke;
+    letter-spacing: 3px;
+}
+
